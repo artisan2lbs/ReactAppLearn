@@ -13,15 +13,18 @@
 
 <!-- 指定脚本编译 -->
 <script type="text/babel">
-    //定义一个变量
-    const va = "+++++++++_____________++++++++++";
-    //获取一个元素
-    let myApp = document.getElementById("app0");
-    //使用React渲染指定的元素myApp
-    ReactDOM.render(
-        <h1>{va}哈哈哈哈{va}</h1>,
-        myApp
-    );
+    //定义一个函数，用于渲染一个div的元素展示时间
+    function tick() {
+        const element = (
+            <div>
+                <h1>Hello, world!</h1>
+                <h2>It is {new Date().toLocaleTimeString()}.</h2>
+            </div>
+        );
+        ReactDOM.render(element, document.getElementById('app0'));
+    }
+    //设置定时器，每隔1秒钟执行一次tick函数
+    setInterval(tick,1000);
 </script>
 <body>
     <div id="app0">
