@@ -13,19 +13,21 @@
 
 <!-- 指定脚本编译 -->
 <script type="text/babel">
-/*
-    function Welcome(props) {
+
+    function Welcome1(props) {
         console.log("props->",props);
         return <h1>Hello, {props.name} {props.famliyName}</h1>;
     }
-*/
 
-    class Welcome extends React.Component{
+
+    class Welcome2 extends React.Component{
         render(){
             const props = this.props;
             return (<h1>Hello, {props.name} {props.famliyName}</h1>);
         }
     }
+
+    const welcome3 = <h1>Hello , React</h1>
     // const element = <Welcome name="Sara" />;
     /*
     ReactDOM.render(
@@ -39,7 +41,11 @@
     );
 */
     ReactDOM.render(
-        <Welcome name="小小小酥" famliyName="云"/>,
+        <div>
+            <Welcome1 name="小小小酥" famliyName="云"/>
+            <Welcome2 name="小小小酥" famliyName="云"/>
+            {welcome3}
+        </div>,
         document.getElementById('app0')
     );
 </script>
