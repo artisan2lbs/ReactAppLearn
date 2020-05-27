@@ -3,52 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>React种的组件和Props是啥？</title>
+    <style>
+        .Comment{
+            background-color: darkslategray;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .Comment-text{
+            color: white;
+        }
+        .Comment-date{
+            color: white;
+        }
+        .Avatar{
+            width: 80px;
+            border-radius: 40px;
+        }
+        .UserInfo{
+
+        }
+        .UserInfo-name{
+            color: white;
+        }
+
+    </style>
+    <!-- 引入React的相关库 -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <!-- 引入Babel相关的库 -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+
+    <!-- 指定脚本编译 -->
+    <script type="text/babel">
+
+        function formatDate(dateStr) {
+            return dateStr;
+        }
+        function Avatar(props) {
+            return (<img className="Avatar"
+                         src={props.author.avatarUrl}
+                         alt={props.author.name}
+            />);
+        }
+        function UserInfo(props){
+            return (<div className="UserInfo">
+                <Avatar author={props.author}/>
+                <div className="UserInfo-name">
+                    {props.author.name}
+                </div>
+            </div>);
+        }
+        function CommentMSG(props) {
+            return (<div>
+                <div className="Comment-text">
+                    {props.msg.text}
+                </div>
+                <div className="Comment-date">
+                    {formatDate(props.msg.date)}
+                </div>
+            </div>);
+        }
+        function Comment(props){
+            return (
+                <div className="Comment">
+                    <UserInfo author={props.author}/>
+                    <CommentMSG msg={props.msg}/>
+                </div>
+            )
+        }
+        const author = {
+            name:"萨比斯",
+            avatarUrl:"https://lh3.googleusercontent.com/RqBsriTEWSRBA9lyzE9wMSZrJgHUHDJh80Ti7O4ohxHYB_trNMttO1W-DEdrtss0xkoxWogtqVQ=w128-h128-e365"
+        }
+        ReactDOM.render(
+            <Comment author={author} msg={{text:"Hello Nihao ",date:"2020-05-27"}}/>
+            ,
+            document.getElementById('app0')
+        );
+    </script>
 </head>
 
-<!-- 引入React的相关库 -->
-<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-<!-- 引入Babel相关的库 -->
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
 
-<!-- 指定脚本编译 -->
-<script type="text/babel">
-
-    function Welcome1(props) {
-        console.log("props->",props);
-        return <h1>Hello, {props.name} {props.famliyName}</h1>;
-    }
-
-
-    class Welcome2 extends React.Component{
-        render(){
-            const props = this.props;
-            return (<h1>Hello, {props.name} {props.famliyName}</h1>);
-        }
-    }
-
-    const welcome3 = <h1>Hello , React</h1>
-    // const element = <Welcome name="Sara" />;
-    /*
-    ReactDOM.render(
-        Welcome({name:"小小酥"}),
-        document.getElementById('app0')
-    );*/
-    /*
-    ReactDOM.render(
-        <Welcome name="小小小酥"/>,
-        document.getElementById('app0')
-    );
-*/
-    ReactDOM.render(
-        <div>
-            <Welcome1 name="小小小酥" famliyName="云"/>
-            <Welcome2 name="小小小酥" famliyName="云"/>
-            {welcome3}
-        </div>,
-        document.getElementById('app0')
-    );
-</script>
 <body>
     <div id="app0">
         这是我的第一个React APP
