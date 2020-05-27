@@ -35,7 +35,7 @@
 
     <!-- 指定脚本编译 -->
     <script type="text/babel">
-
+        /*组件部分*/
         function formatDate(dateStr) {
             return dateStr;
         }
@@ -71,10 +71,13 @@
                 </div>
             )
         }
+
+        /*数据部分*/
         const author = {
             name:"萨比斯",
             avatarUrl:"https://lh3.googleusercontent.com/RqBsriTEWSRBA9lyzE9wMSZrJgHUHDJh80Ti7O4ohxHYB_trNMttO1W-DEdrtss0xkoxWogtqVQ=w128-h128-e365"
         }
+        /*渲染*/
         ReactDOM.render(
             <Comment author={author} msg={{text:"Hello Nihao ",date:"2020-05-27"}}/>
             ,
