@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>测试</title>
+    <title>React种的组件和Props是啥？</title>
 </head>
 
 <!-- 引入React的相关库 -->
@@ -13,13 +13,33 @@
 
 <!-- 指定脚本编译 -->
 <script type="text/babel">
+/*
     function Welcome(props) {
-        return <h1>Hello, {props.name}</h1>;
+        console.log("props->",props);
+        return <h1>Hello, {props.name} {props.famliyName}</h1>;
     }
+*/
 
-    const element = <Welcome name="Sara" />;
+    class Welcome extends React.Component{
+        render(){
+            const props = this.props;
+            return (<h1>Hello, {props.name} {props.famliyName}</h1>);
+        }
+    }
+    // const element = <Welcome name="Sara" />;
+    /*
     ReactDOM.render(
-        element,
+        Welcome({name:"小小酥"}),
+        document.getElementById('app0')
+    );*/
+    /*
+    ReactDOM.render(
+        <Welcome name="小小小酥"/>,
+        document.getElementById('app0')
+    );
+*/
+    ReactDOM.render(
+        <Welcome name="小小小酥" famliyName="云"/>,
         document.getElementById('app0')
     );
 </script>
